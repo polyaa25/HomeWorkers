@@ -135,15 +135,15 @@
 
             </LinearLayout>
 
-            <pl.droidsonroids.gif.GifImageView
-                android:id="@+id/gif_image"
-                android:layout_width="218dp"
-                android:layout_height="283dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginEnd="100dp"
-                android:layout_marginBottom="900dp"
-                android:src="@drawable/baby" />
+<!--            <pl.droidsonroids.gif.GifImageView-->
+<!--                android:id="@+id/gif_image"-->
+<!--                android:layout_width="218dp"-->
+<!--                android:layout_height="283dp"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_marginEnd="100dp"-->
+<!--                android:layout_marginBottom="900dp"-->
+<!--                android:src="@drawable/baby" />-->
 
 
 
