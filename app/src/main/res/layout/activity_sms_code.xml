@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SmsCode">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="173dp"
+            android:layout_height="153dp"
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="80dp"
+            app:srcCompat="@drawable/nopassw" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="168dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/app_in_smscode"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="51dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="180dp"
+            android:layout_marginBottom="10dp"
+            android:text="****"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/code"
+            android:layout_width="150dp"
+            android:layout_height="55dp"
+            android:layout_above="@+id/text2"
+            android:textSize="15dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginStart="120dp"/>
+        <Button
+            android:id="@+id/further2"
+            android:layout_width="239dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="80dp"
+            android:background="@drawable/gradient"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:text="@string/app_in_nowpasswdalee"
+            android:textAllCaps="false"
+            android:textStyle="normal"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
