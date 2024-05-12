@@ -19,9 +19,7 @@ public class Aplication extends AppCompatActivity {
         imageButton2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Переход к другой активности
-                Intent intent = new Intent(Aplication.this, Homepage.class);
-                startActivity(intent);
+                finish();
             }
         });
     }
