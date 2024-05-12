@@ -11,13 +11,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_telephone2"
-        android:paddingStart="40dp"
-        android:drawablePadding="-45dp"
-        android:text="Позвонить"/>
+        android:paddingStart="80dp"
+        android:drawablePadding="-80dp"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        android:text="@string/telephone1"
+        android:background="@drawable/button_dialog1"/>
 
     <Button
         android:id="@+id/whatsapp_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Написать в WhatsApp"/>
+        android:layout_marginTop="5dp"
+        android:drawableStart="@drawable/ic_whatsapp"
+        android:paddingStart="70dp"
+        android:drawablePadding="-70dp"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        android:text="@string/telephone2"
+        android:background="@drawable/button_dialog1"/>
 </LinearLayout>
