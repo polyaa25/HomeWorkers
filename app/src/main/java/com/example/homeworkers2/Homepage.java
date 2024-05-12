@@ -11,7 +11,8 @@ import android.widget.Button;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.widget.ImageButton;
-
+import android.content.pm.PackageManager;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -40,69 +41,44 @@ public class Homepage extends AppCompatActivity {
 
         imageButton2.setOnClickListener(v -> drawer_layout.openDrawer(GravityCompat.START));
 
-        addOrderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Homepage.this, Categories.class); //переход в класс Catalog
-                startActivity(intent);
-            }
+        addOrderButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Homepage.this, Categories.class); // Переход в класс Catalog
+            startActivity(intent);
         });
 
-        accauntButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Homepage.this, Account.class); //переход в класс Catalog
-                startActivity(intent);
-            }
+        accauntButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Homepage.this, Account.class);
+            startActivity(intent);
         });
 
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
 
             if (id == R.id.nav_pod) {
-                Intent intent = new Intent(Homepage.this, Support.class);
-                startActivity(intent);
+                showContactOptions();
             } else if (id == R.id.nav_opr) {
-                Intent intent = new Intent(Homepage.this, Aplication.class); //переход в класс Catalog
+                Intent intent = new Intent(Homepage.this, Aplication.class);
                 startActivity(intent);
             } else if (id == R.id.nav_exit) {
-                // Закрываем все активности приложения
-                finishAffinity();
-                // Альтернативный способ: System.exit(0)
+                finishAffinity();  // Закрыть все активности приложения
             }
-
             drawer_layout.closeDrawer(GravityCompat.START);
             return true;
         });
 
         Button dom1Button = findViewById(R.id.dom1);
-        dom1Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Переход к другой активности
-                Intent intent = new Intent(Homepage.this, Homepage.class);
-                startActivity(intent);
-            }
-        });
-        NavigationView navigationView = findViewById(R.id.navigationview);
-        navigationView.setNavigationItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.nav_pod) {
-                showCallDialog();  // Вызов метода для показа диалога
-            }
-            // Закрыть drawer после выбора элемента
-            DrawerLayout drawer = findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
-            return true;
+        dom1Button.setOnClickListener(v -> {
+            Intent intent = new Intent(Homepage.this, Homepage.class);
+            startActivity(intent);
         });
     }
 
-    private void showCallDialog() {
+    private void showContactOptions() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Появился вопрос?");
-        builder.setMessage("Вы хотите позвонить?");
-        builder.setPositiveButton("Позвонить", (dialog, which) -> {
-            callNumber();  // Метод для начала звонка
-        });
+        builder.setTitle("Возникли вопросы?");
+        builder.setMessage("Выберите действие:");
+        builder.setPositiveButton("Позвонить", (dialog, which) -> callNumber());
+        builder.setNeutralButton("Написать в WhatsApp", (dialog, which) -> openWhatsApp());
         builder.setNegativeButton("Отмена", (dialog, which) -> dialog.dismiss());
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -110,8 +86,21 @@ public class Homepage extends AppCompatActivity {
 
     private void callNumber() {
         Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:+77057163397"));  // Укажите нужный номер
+        intent.setData(Uri.parse("tel:+77057163397"));
         startActivity(intent);
     }
 
+    private void openWhatsApp() {
+        String phoneNumber = "+77057163397";
+        String url = "https://api.whatsapp.com/send?phone=" + phoneNumber;
+        try {
+            PackageManager packageManager = getPackageManager();
+            packageManager.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES);
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(this, "WhatsApp не установлен", Toast.LENGTH_SHORT).show();
+        }
     }
+}
