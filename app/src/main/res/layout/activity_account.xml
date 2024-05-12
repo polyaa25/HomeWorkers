@@ -111,11 +111,11 @@
             android:layout_height="50dp"
             android:layout_marginStart="110dp"
             android:background="@drawable/gradient"
-            android:textColor="@color/white"
-            android:textSize="14sp"
             android:text="@string/account_sohr"
             android:textAllCaps="false"
-            android:textStyle="normal"/>
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="normal" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,6 +35,10 @@
     <string name="exit">Выход</string>
     <string name="aplication_1">Условия использования</string>
     <string name="employee_1">Валерий Дмитриевич</string>
+    <string name="employee_2">Сфера деят-ти: электрик</string>
+    <string name="employee_3">Вызов</string>
+    <string name="employee_star_1">5.7</string>
+    <string name="telephone1">Позвонить</string>
 
     <string name="aplication_big">Политика конфиденциальности.
 
