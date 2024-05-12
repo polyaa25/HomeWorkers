@@ -2,21 +2,23 @@ package com.example.homeworkers2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-public class Aplication extends AppCompatActivity {
+public class CreateOrder extends AppCompatActivity {
+
+
+    private ImageButton stopButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_aplication);
+        setContentView(R.layout.activity_create_order);
 
-        ImageButton imageButton2Button = findViewById(R.id.imageButton2);
-        imageButton2Button.setOnClickListener(new View.OnClickListener() {
+        stopButton = findViewById(R.id.stopButton);
+
+        stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
