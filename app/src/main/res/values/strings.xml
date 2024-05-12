@@ -1,4 +1,6 @@
 <resources>
+    <string name="app_in_categories_st" >Ремонт и строительство</string>
+    <string name="app_in_categories_cl" >Уборка и чистка</string>
     <string name="app_name">HomeWorkers2</string>
     <string name="app_in_name">Алматы</string>
     <string name="app_welc_name">Welcome</string>

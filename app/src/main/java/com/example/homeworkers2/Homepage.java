@@ -18,6 +18,7 @@ import com.google.android.material.navigation.NavigationView;
 public class Homepage extends AppCompatActivity {
 
     private ImageButton imageButton2;
+    private Button addOrderButton;
     DrawerLayout drawer_layout;
     NavigationView navigationView;
 
@@ -33,9 +34,19 @@ public class Homepage extends AppCompatActivity {
         imageButton2 = findViewById(R.id.imageButton2);
         navigationView = findViewById(R.id.navigationview);
 
+        addOrderButton = findViewById(R.id.plus1);
+
         accauntButton = navigationView.getHeaderView(0).findViewById(R.id.account_ac);
 
         imageButton2.setOnClickListener(v -> drawer_layout.openDrawer(GravityCompat.START));
+
+        addOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Homepage.this, Categories.class); //переход в класс Catalog
+                startActivity(intent);
+            }
+        });
 
         accauntButton.setOnClickListener(new View.OnClickListener() {
             @Override
