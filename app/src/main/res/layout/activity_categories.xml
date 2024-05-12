@@ -24,8 +24,10 @@
             android:layout_width="266dp"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
-            android:drawableLeft="@drawable/ic_stroitel"
+            android:drawableStart="@drawable/ic_stroitel"
+            android:drawableEnd="@drawable/ic_next"
             android:drawablePadding="10dp"
+            android:layout_marginBottom="15dp"
             android:text="@string/app_in_categories_st"
             android:textAlignment="textStart"
             android:textAllCaps="false" />
@@ -35,7 +37,8 @@
             android:layout_width="266dp"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
-            android:drawableLeft="@drawable/ic_uborka"
+            android:drawableStart="@drawable/ic_uborka"
+            android:drawableEnd="@drawable/ic_next"
             android:drawablePadding="10dp"
             android:text="@string/app_in_categories_cl"
             android:textAlignment="textStart"
@@ -54,15 +57,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/nextButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="480dp"
-        android:background="@color/transparent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_next"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
