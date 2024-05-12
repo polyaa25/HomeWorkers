@@ -15,6 +15,7 @@
         android:drawablePadding="-80dp"
         android:textSize="15sp"
         android:textStyle="normal"
+        android:textAllCaps="false"
         android:text="@string/telephone1"
         android:background="@drawable/button_dialog1"/>
 
@@ -24,10 +25,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:drawableStart="@drawable/ic_whatsapp"
-        android:paddingStart="70dp"
-        android:drawablePadding="-70dp"
-        android:textSize="15sp"
+        android:paddingStart="60dp"
+        android:drawablePadding="-62dp"
+        android:textSize="14sp"
         android:textStyle="normal"
+        android:textAllCaps="false"
         android:text="@string/telephone2"
         android:background="@drawable/button_dialog1"/>
 </LinearLayout>

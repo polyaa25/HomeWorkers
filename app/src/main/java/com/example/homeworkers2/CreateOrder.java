@@ -14,7 +14,6 @@ public class CreateOrder extends AppCompatActivity {
 
 
     private ImageButton stopButton;
-    Animation fadeInAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +30,8 @@ public class CreateOrder extends AppCompatActivity {
         });
 
         Button borderButton = findViewById(R.id.button_border);
+        Animation fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+
         borderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
