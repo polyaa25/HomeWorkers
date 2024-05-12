@@ -9,25 +9,66 @@
     <LinearLayout
         android:layout_width="413dp"
         android:layout_height="37dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:srcCompat="@drawable/ic_dark_stroitel" />
-
         <ImageButton
             android:id="@+id/stopButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
-
+            android:layout_marginStart="25dp"
             android:background="@color/transparent"
             android:scaleType="fitCenter"
             android:src="@drawable/crest" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="25dp"
+            app:srcCompat="@drawable/ic_dark_stroitel" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="363dp"
+        android:layout_height="551dp"
+        android:layout_marginBottom="65dp"
+        android:orientation="vertical"
+        android:background="@drawable/violet_radius_rectangle_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/service1"
+            android:layout_width="295dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/transparent"
+            android:drawableEnd="@drawable/ic_dark_next"
+            android:text="Услуги электрика"
+            android:textAlignment="textStart"
+            android:textAllCaps="false" />
+        <Button
+            android:id="@+id/service2"
+            android:layout_width="295dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/transparent"
+            android:drawableEnd="@drawable/ic_dark_next"
+            android:text="Услуги сантехника"
+            android:textAlignment="textStart"
+            android:textAllCaps="false" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
