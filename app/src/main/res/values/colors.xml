@@ -3,9 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#D9D9D9</color>
+    <color name="while_purple">#D0B3ED</color>
     <color name="white_blue">#E6E5F1</color>
     <color name="blue">#7378FD</color>
     <color name="violet">#B780DF</color>
     <color name="darkgrey">#4C4C4C</color>
-    <color name="transparent">#00FFA500</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

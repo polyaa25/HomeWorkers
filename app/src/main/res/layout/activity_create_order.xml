@@ -47,6 +47,7 @@
                 android:id="@+id/editTelephoneText"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
+                android:padding="13dp"
                 android:background="@drawable/text_background"
                 android:ems="10"
                 android:inputType="text" />
@@ -74,6 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@drawable/text_background"
+                android:padding="13dp"
                 android:ems="10"
                 android:inputType="text" />
 
@@ -121,8 +123,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:background="@drawable/text_background"
-                android:ems="10"
-                android:inputType="text" />
+                android:padding="13dp"
+                android:textAlignment="viewStart"
+
+                android:inputType="textLongMessage"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

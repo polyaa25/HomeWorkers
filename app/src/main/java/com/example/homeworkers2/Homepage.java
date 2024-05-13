@@ -20,6 +20,7 @@ public class Homepage extends AppCompatActivity {
 
     private ImageButton imageButton2;
     private Button addOrderButton;
+    private Button ordersListButton;
     DrawerLayout drawer_layout;
     NavigationView navigationView;
 
@@ -36,10 +37,17 @@ public class Homepage extends AppCompatActivity {
         navigationView = findViewById(R.id.navigationview);
 
         addOrderButton = findViewById(R.id.plus1);
+        ordersListButton = findViewById(R.id.catalog1);
 
         accauntButton = navigationView.getHeaderView(0).findViewById(R.id.account_ac);
 
         imageButton2.setOnClickListener(v -> drawer_layout.openDrawer(GravityCompat.START));
+
+        ordersListButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Homepage.this, OrdersList.class); // Переход в класс Catalog
+            startActivity(intent);
+        });
+
 
         addOrderButton.setOnClickListener(v -> {
             Intent intent = new Intent(Homepage.this, Categories.class); // Переход в класс Catalog
