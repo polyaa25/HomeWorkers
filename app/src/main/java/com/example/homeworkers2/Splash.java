@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+
+import com.example.homeworkers2.backend.Auth;
 
 public class Splash extends AppCompatActivity {
 
@@ -13,6 +16,8 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        Auth.create(this);
+
         // Создание Handler
         Handler handler = new Handler();
 
@@ -20,9 +25,17 @@ public class Splash extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Код, который нужно выполнить после задержки
-                Intent intent = new Intent(Splash.this, MainActivity.class);
-                startActivity(intent);
+                if(Auth.getAuthToken() != null){
+                    Intent intent = new Intent(Splash.this, Homepage.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(Splash.this, MainActivity.class);
+                    startActivity(intent);
+                }
+
+                finish();
+
             }
         }, 2000); // Задержка в миллисекундах
     }

@@ -6,15 +6,47 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.content.Intent;
+import android.widget.TextView;
+
+import com.example.homeworkers2.backend.Auth;
+import com.example.homeworkers2.backend.Urls;
+import com.example.homeworkers2.backend.UrlsRequestMethod;
+import com.example.homeworkers2.backend.UrlsType;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TextView nonAuthText;
+    
+    private EditText phoneText;
+    private EditText passwordText;
+
+    private Urls urls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        urls = new Urls(this);
+
+        phoneText = findViewById(R.id.login_phone_edit_text);
+        passwordText = findViewById(R.id.login_password_edit_text);
+
+        nonAuthText = findViewById(R.id.login_or_password_error);
 
          //Анимация для изображения
         ImageView imageView = findViewById(R.id.imageView2);
@@ -30,6 +62,52 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(fadeInAnimation); // Анимация при нажатии
+
+                JSONObject body = new JSONObject();
+
+                try {
+                    body.put("telephone", phoneText.getText().toString());
+                    body.put("password", passwordText.getText().toString());
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Future<Response> response = urls.sendRequest(
+                        UrlsType.POST_LOGIN,
+                        body.toString(),
+                        UrlsRequestMethod.POST
+                );
+
+                try {
+                    Response resultResponse = response.get();
+
+                    if(resultResponse != null){
+                        if(resultResponse.isSuccessful()){
+
+                            JSONObject responseJson = new JSONObject(resultResponse.body().string());
+                            String token = responseJson.getString("auth_token");
+                            String userId = responseJson.getString("user_id");
+
+                            Auth.setAuthUserId(userId);
+                            Auth.setAuthToken(token);
+
+
+
+                            Intent intent = new Intent(MainActivity.this, Homepage.class);
+                            startActivity(intent);
+                        } else {
+                            nonAuthText.setVisibility(View.VISIBLE);
+                        }
+                    }
+                } catch (ExecutionException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
 
             }
         });
@@ -57,18 +135,6 @@ public class MainActivity extends AppCompatActivity {
 
                 // Переход на другое активити
                 Intent intent = new Intent(MainActivity.this, Password.class);
-                startActivity(intent);
-            }
-        });
-
-        Button button_login_Button = findViewById(R.id.button_login);
-        button_login_Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(scaleAnimation); // Анимация при нажатии
-
-                // Переход на другое активити
-                Intent intent = new Intent(MainActivity.this, Homepage.class);
                 startActivity(intent);
             }
         });

@@ -31,7 +31,7 @@
             android:layout_marginStart="135dp"/>
 
         <EditText
-            android:id="@+id/text1"
+            android:id="@+id/phone"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_above="@+id/text2"
@@ -42,45 +42,45 @@
             android:layout_marginStart="70dp"/>
 
         <EditText
-            android:id="@+id/text2"
+            android:id="@+id/lastName"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_above="@+id/text2"
             android:textSize="15dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/app_in_fam"
+            android:hint="@string/app_in_fam"
             android:layout_marginStart="70dp"/>
         <EditText
-            android:id="@+id/text3"
+            android:id="@+id/firstName"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_above="@+id/text2"
             android:textSize="15dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/app_in_famname"
+            android:hint="@string/app_in_famname"
             android:layout_marginStart="70dp"/>
 
         <EditText
-            android:id="@+id/text4"
+            android:id="@+id/password1"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_above="@+id/button3"
             android:layout_centerHorizontal="true"
             android:textSize="15dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/app_passw_name"
+            android:hint="@string/app_passw_name"
             android:inputType="textPassword"
             android:layout_marginStart="70dp"/>
 
         <EditText
-            android:id="@+id/text5"
+            android:id="@+id/password2"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_above="@+id/button3"
             android:layout_centerHorizontal="true"
             android:textSize="15dp"
             android:layout_marginBottom="50dp"
-            android:text="@string/app_passw_name"
+            android:hint="@string/app_passw_name"
             android:inputType="textPassword"
             android:layout_marginStart="70dp"/>
 

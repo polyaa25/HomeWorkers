@@ -7,6 +7,7 @@
     tools:context=".Services">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="413dp"
         android:layout_height="37dp"
         android:layout_marginTop="30dp"
@@ -38,37 +39,13 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="363dp"
-        android:layout_height="551dp"
-        android:layout_marginBottom="65dp"
-        android:orientation="vertical"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/service_list"
+        android:layout_width="309dp"
+        android:layout_height="668dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/violet_radius_rectangle_shape"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/service1"
-            android:layout_width="295dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/style_transparent"
-            android:drawableEnd="@drawable/ic_dark_next"
-            android:text="Услуги электрика"
-            android:textAlignment="textStart"
-            android:textAllCaps="false" />
-        <Button
-            android:id="@+id/service2"
-            android:layout_width="295dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/style_transparent"
-            android:drawableEnd="@drawable/ic_dark_next"
-            android:text="Услуги сантехника"
-            android:textAlignment="textStart"
-            android:textAllCaps="false" />
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

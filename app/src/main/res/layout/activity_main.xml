@@ -52,26 +52,34 @@
             android:layout_marginBottom="40dp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/login_or_password_error"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:text="@string/non_login"
+            android:visibility="gone"/>
+
         <EditText
-            android:id="@+id/text1"
+            android:id="@+id/login_phone_edit_text"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_above="@+id/text2"
             android:layout_centerHorizontal="true"
             android:textSize="15dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/app_phone_name"
+            android:hint="@string/app_phone_name"
             android:inputType="phone"/>
 
         <EditText
-            android:id="@+id/text2"
+            android:id="@+id/login_password_edit_text"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_above="@+id/button3"
             android:layout_centerHorizontal="true"
             android:textSize="15dp"
             android:layout_marginBottom="40dp"
-            android:text="@string/app_passw_name"
+            android:hint="@string/app_passw_name"
             android:inputType="textPassword"/>
 
         <Button

@@ -6,44 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Categories">
 
-    <LinearLayout
-        android:layout_width="420dp"
-        android:layout_height="212dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="2dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/categories1"
-            android:layout_width="266dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/style_transparent"
-            android:drawableStart="@drawable/ic_stroitel"
-            android:drawableEnd="@drawable/ic_next"
-            android:drawablePadding="10dp"
-            android:layout_marginBottom="15dp"
-            android:text="@string/app_in_categories_st"
-            android:textAlignment="textStart"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/categories2"
-            android:layout_width="266dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/style_transparent"
-            android:drawableStart="@drawable/ic_uborka"
-            android:drawableEnd="@drawable/ic_next"
-            android:drawablePadding="10dp"
-            android:text="@string/app_in_categories_cl"
-            android:textAlignment="textStart"
-            android:textAllCaps="false" />
-    </LinearLayout>
 
     <ImageButton
         android:id="@+id/stopButton"
@@ -56,5 +19,16 @@
         android:src="@drawable/crest"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/category_list"
+        android:layout_width="307dp"
+        android:layout_height="642dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stopButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

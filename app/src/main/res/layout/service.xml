@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/service"
+    android:layout_width="match_parent"
+    android:layout_height="33dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/style_transparent"
+    android:drawableEnd="@drawable/ic_dark_next"
+    android:gravity="center_vertical"
+    android:text="Услуги электрика"
+    android:textAllCaps="false" />

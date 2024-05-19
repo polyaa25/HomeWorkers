@@ -21,24 +21,30 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/back" />
 
-        <ImageButton
-            android:id="@+id/image_photo"
+        <androidx.cardview.widget.CardView
             android:layout_width="130dp"
-            android:layout_height="160dp"
+            android:layout_height="130dp"
             android:layout_marginTop="50dp"
-            android:background="@color/transparent"
-            app:srcCompat="@drawable/maleuser"
-            android:scaleType="fitCenter"
-            android:layout_marginLeft="140dp" />
 
+            android:layout_marginLeft="140dp"
+            app:cardCornerRadius="100dp">
 
-        <ImageView
-            android:id="@+id/plus_photo"
-            android:layout_width="43dp"
-            android:layout_height="31dp"
-            android:layout_marginLeft="220dp"
-            android:layout_marginTop="-40dp"
-            app:srcCompat="@drawable/add" />
+            <ImageView
+                android:id="@+id/avatar_accaunt"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/maleuser" />
+        </androidx.cardview.widget.CardView>
+
+<!--        <ImageView-->
+<!--            android:id="@+id/plus_photo"-->
+<!--            android:layout_width="43dp"-->
+<!--            android:layout_height="31dp"-->
+<!--            android:layout_marginLeft="220dp"-->
+<!--            android:layout_marginTop="-40dp"-->
+<!--            app:srcCompat="@drawable/add" />-->
 
         <TextView
             android:id="@+id/account_text1"
@@ -53,7 +59,7 @@
             android:layout_marginStart="60dp"/>
 
         <EditText
-            android:id="@+id/account_name1"
+            android:id="@+id/account_first_name"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_above="@+id/text2"
@@ -74,7 +80,7 @@
             android:textStyle="normal"
             android:layout_marginStart="60dp"/>
         <EditText
-            android:id="@+id/account_name2"
+            android:id="@+id/account_last_name"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_above="@+id/text2"
@@ -96,21 +102,22 @@
             android:layout_marginStart="60dp"/>
 
         <EditText
-            android:id="@+id/account_name3"
+            android:id="@+id/account_phone_number"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_above="@+id/text2"
             android:textSize="15dp"
             android:layout_marginBottom="40dp"
             android:text="@string/app_phone_name3"
-            android:layout_marginStart="60dp"/>
+            android:layout_marginStart="60dp"
+            android:inputType="phone"/>
 
         <Button
             android:id="@+id/account_zareg"
             android:layout_width="180dp"
             android:layout_height="50dp"
             android:layout_marginStart="110dp"
-            android:background="@drawable/gradient"
+            android:background="@drawable/gradient2"
             android:text="@string/account_sohr"
             android:textAllCaps="false"
             android:textColor="@color/white"
