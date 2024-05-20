@@ -8,12 +8,13 @@
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gif_image"
-        android:layout_width="218dp"
-        android:layout_height="283dp"
-        android:src="@drawable/baby"
+        android:layout_width="277dp"
+        android:layout_height="384dp"
+        android:src="@drawable/yy3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.587" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
