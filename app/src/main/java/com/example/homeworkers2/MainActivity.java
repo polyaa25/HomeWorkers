@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.content.Intent;
 import android.widget.TextView;
 
+import com.example.homeworkers2.accaunt.AccauntHandle;
 import com.example.homeworkers2.backend.Auth;
 import com.example.homeworkers2.backend.Urls;
 import com.example.homeworkers2.backend.UrlsRequestMethod;
@@ -63,51 +64,44 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 v.startAnimation(fadeInAnimation); // Анимация при нажатии
 
-                JSONObject body = new JSONObject();
+                AccauntHandle.LoginCallback callback = new AccauntHandle.LoginCallback() {
+                    @Override
+                    public void onSuccess(Response response) {
+                        try {
+                            if(response != null){
+                                if(response.isSuccessful()){
 
-                try {
-                    body.put("telephone", phoneText.getText().toString());
-                    body.put("password", passwordText.getText().toString());
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
+                                    JSONObject responseJson = new JSONObject(response.body().string());
+                                    String token = responseJson.getString("auth_token");
+                                    String userId = responseJson.getString("user_id");
 
-                Future<Response> response = urls.sendRequest(
-                        UrlsType.POST_LOGIN,
-                        body.toString(),
-                        UrlsRequestMethod.POST
-                );
+                                    Auth.setAuthUserId(userId);
+                                    Auth.setAuthToken(token);
 
-                try {
-                    Response resultResponse = response.get();
-
-                    if(resultResponse != null){
-                        if(resultResponse.isSuccessful()){
-
-                            JSONObject responseJson = new JSONObject(resultResponse.body().string());
-                            String token = responseJson.getString("auth_token");
-                            String userId = responseJson.getString("user_id");
-
-                            Auth.setAuthUserId(userId);
-                            Auth.setAuthToken(token);
-
-
-
-                            Intent intent = new Intent(MainActivity.this, Homepage.class);
-                            startActivity(intent);
-                        } else {
-                            nonAuthText.setVisibility(View.VISIBLE);
+                                    runOnUiThread(() -> {
+                                        Intent intent = new Intent(MainActivity.this, Homepage.class);
+                                        startActivity(intent);
+                                    });
+                                } else {
+                                    runOnUiThread(() -> {
+                                        nonAuthText.setVisibility(View.VISIBLE);
+                                    });
+                                }
+                            }
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
                         }
                     }
-                } catch (ExecutionException e) {
-                    throw new RuntimeException(e);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
+
+                    @Override
+                    public void onFailure(Exception e) {
+
+                    }
+                };
+
+                AccauntHandle.login(urls, phoneText.getText().toString(), passwordText.getText().toString(), callback);
 
             }
         });

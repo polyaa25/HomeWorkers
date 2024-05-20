@@ -14,6 +14,7 @@ import com.example.homeworkers2.accaunt.ServicesAdapter;
 import com.example.homeworkers2.accaunt.ServicesData;
 import com.example.homeworkers2.accaunt.ServicesHandle;
 import com.example.homeworkers2.backend.Urls;
+import com.example.homeworkers2.category.CategoryData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +38,9 @@ public class Services extends AppCompatActivity {
 
         urls = new Urls(this);
 
-        String categoryId = getIntent().getStringExtra(Categories.EXTRA_CATEGORY_ID);
+        CategoryData category = (CategoryData) getIntent().getSerializableExtra(Categories.EXTRA_CATEGORY);
 
-        services = ServicesHandle.getServicesByCategoryId(urls, categoryId);
+        services = category.getServices();
 
         servicesList = findViewById(R.id.service_list);
 

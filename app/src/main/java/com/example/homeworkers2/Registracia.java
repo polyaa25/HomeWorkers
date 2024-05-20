@@ -60,11 +60,4 @@ public class Registracia extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        urls.shutdown();
-    }
 }

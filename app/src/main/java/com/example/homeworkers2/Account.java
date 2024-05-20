@@ -1,5 +1,6 @@
 package com.example.homeworkers2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,8 +23,11 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.concurrent.Future;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Response;
 
 public class Account extends AppCompatActivity {
@@ -85,10 +89,9 @@ public class Account extends AppCompatActivity {
                 String lastname = lastNameText.getText().toString();
                 String phoneNumber = phoneNumberText.getText().toString();
 
-                if( firstname != accauntData.getFirstName() ||
-                    lastname != accauntData.getLastName() ||
-                    phoneNumber != accauntData.getPhoneNumber()){
-
+                if(firstname != accauntData.getFirstName() ||
+                        lastname != accauntData.getLastName() ||
+                        phoneNumber != accauntData.getPhoneNumber()){
                     JSONObject body = new JSONObject();
 
                     try {
@@ -96,17 +99,28 @@ public class Account extends AppCompatActivity {
                         addObjectToJson(body, "last_name", lastname, accauntData.getFirstName());
                         addObjectToJson(body, "telephone", phoneNumber, accauntData.getPhoneNumber());
 
-                        urls.sendRequest(
-                                UrlsType.getUrlToUserResetParams(Auth.getAuthUserId()),
-                                body.toString(),
-                                UrlsRequestMethod.PATCH
-                        );
-
-                        finish();
-
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
+
+                    Callback callback = new Callback() {
+                        @Override
+                        public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+                        }
+
+                        @Override
+                        public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+                        }
+                    };
+
+                    urls.sendRequest(
+                            UrlsType.getUrlToUserResetParams(Auth.getAuthUserId()),
+                            body.toString(),
+                            UrlsRequestMethod.PATCH,
+                            callback
+                    );
 
                 }
 
@@ -114,7 +128,7 @@ public class Account extends AppCompatActivity {
         });
     }
 
-    private void addObjectToJson(JSONObject body, String key, String name, String nameCompared) throws JSONException {
+    private static void addObjectToJson(JSONObject body, String key, String name, String nameCompared) throws JSONException {
         if(name != nameCompared){
             body.put(key, name);
         }

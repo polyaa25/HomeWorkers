@@ -10,8 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.homeworkers2.accaunt.AccauntData;
-import com.example.homeworkers2.accaunt.ServicesData;
-import com.example.homeworkers2.accaunt.ServicesHandle;
+import com.example.homeworkers2.accaunt.AccauntHandle;
 import com.example.homeworkers2.backend.Urls;
 import com.example.homeworkers2.order.OrderHandle;
 
@@ -51,22 +50,33 @@ public class CreateOrder extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                AccauntData employee = OrderHandle.createorder(
+                AccauntHandle.AccauntCallback callback = new AccauntHandle.AccauntCallback() {
+                    @Override
+                    public void onSuccess(AccauntData data) {
+                        runOnUiThread(() -> {
+                            Intent intent = new Intent(CreateOrder.this, Employee.class);
+
+                            intent.putExtra(OrdersList.EXTRA_ACCAUNT_EMPLOYEE, data);
+
+                            startActivity(intent);
+                            finish();
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(Exception e) {
+
+                    }
+                };
+
+                OrderHandle.createOrder(
                         urls,
                         editTelephoneText.getText().toString(),
                         editAddressText.getText().toString(),
                         editOrderText.getText().toString(),
-                        idService
+                        idService,
+                        callback
                 );
-
-                Intent intent = new Intent(CreateOrder.this, Employee.class);
-
-//                ServicesData service = ServicesHandle.getOfferedService(urls, idService);
-//                employee.setServices(service);
-
-                intent.putExtra(OrdersList.EXTRA_ACCAUNT_EMPLOYEE, employee);
-
-                startActivity(intent);
 
                 finish();
             }

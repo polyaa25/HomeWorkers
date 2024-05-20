@@ -20,8 +20,7 @@ public class AccauntData implements Serializable {
     private String lastName;
     private String phoneNumber;
     private String avatarUrl;
-    private String idOfferedServices;
-    private String arithmeticMeanScore;
+    private float arithmeticMeanScore;
     private ServicesData services;
 
     public ServicesData getServices() {
@@ -72,19 +71,11 @@ public class AccauntData implements Serializable {
         this.avatarUrl = avatarUrl;
     }
 
-    public String getIdOfferedServices() {
-        return idOfferedServices;
-    }
-
-    public void setIdOfferedServices(String idOfferedServices) {
-        this.idOfferedServices = idOfferedServices;
-    }
-
-    public String getArithmeticMeanScore() {
+    public float getArithmeticMeanScore() {
         return arithmeticMeanScore;
     }
 
-    public void setArithmeticMeanScore(String arithmeticMeanScore) {
+    public void setArithmeticMeanScore(float arithmeticMeanScore) {
         this.arithmeticMeanScore = arithmeticMeanScore;
     }
 

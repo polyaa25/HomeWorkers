@@ -24,7 +24,6 @@ public class OrdersList extends AppCompatActivity {
 
     private Urls urls;
 
-    private ArrayList<OrderData> orders;
 
     private ImageButton stopButton;
     private RecyclerView orderList;
@@ -36,18 +35,29 @@ public class OrdersList extends AppCompatActivity {
 
         urls = new Urls(this);
 
-        orders = OrderHandle.getOrdersByUserId(urls, Auth.getAuthUserId());
+        OrderHandle.OrderListCallback callback = new OrderHandle.OrderListCallback() {
+            @Override
+            public void onSuccess(ArrayList<OrderData> datas) {
 
-        System.out.println(orders);
+                runOnUiThread(() -> {
+                    System.out.println(datas);
+                    orderList = findViewById(R.id.order_list);
 
-        stopButton = findViewById(R.id.stopButton);
-        orderList = findViewById(R.id.order_list);
+                    orderList.setLayoutManager(new LinearLayoutManager(OrdersList.this));
 
-        orderList.setLayoutManager(new LinearLayoutManager(this));
+                    OrderAdapter adapter = new OrderAdapter(datas);
 
-        OrderAdapter adapter = new OrderAdapter(orders);
+                    orderList.setAdapter(adapter);
+                });
+            }
 
-        orderList.setAdapter(adapter);
+            @Override
+            public void onFailure(Exception e) {
+
+            }
+        };
+
+        OrderHandle.getOrdersByUserId(urls, Auth.getAuthUserId(), callback);
 
 //        order.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -56,6 +66,8 @@ public class OrdersList extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
+
+        stopButton = findViewById(R.id.stopButton);
 
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override

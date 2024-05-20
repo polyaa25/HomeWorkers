@@ -15,15 +15,14 @@ import com.example.homeworkers2.category.CategoryAdapter;
 import com.example.homeworkers2.category.CategoryData;
 import com.example.homeworkers2.category.CategoryHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Categories extends AppCompatActivity {
 
-    public static final String EXTRA_CATEGORY_ID = "EXTRA_CATEGORY_ID";
+    public static final String EXTRA_CATEGORY = "EXTRA_CATEGORY";
 
     private Urls urls;
-
-    private List<CategoryData> categories;
 
     private RecyclerView categoryList;
     private ImageButton stopButton;
@@ -40,12 +39,20 @@ public class Categories extends AppCompatActivity {
         stopButton = findViewById(R.id.stopButton);
         //nextButton = findViewById(R.id.categories1);
 
-        categories = CategoryHolder.getCategories(urls);
+        CategoryHolder.getCategories(urls, new CategoryHolder.CategoryListCallback() {
+            @Override
+            public void onSuccess(ArrayList<CategoryData> datas) {
+                runOnUiThread(() -> {
+                    categoryList.setLayoutManager(new LinearLayoutManager(Categories.this));
+                    categoryList.setAdapter(new CategoryAdapter(datas));
+                });
+            }
 
-        System.out.println(categories.size());
+            @Override
+            public void onFailure(Exception e) {
 
-        categoryList.setLayoutManager(new LinearLayoutManager(this));
-        categoryList.setAdapter(new CategoryAdapter(categories));
+            }
+        });
 
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override

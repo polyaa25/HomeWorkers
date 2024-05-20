@@ -17,6 +17,8 @@ import com.example.homeworkers2.accaunt.AccauntData;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
+
 public class Employee extends AppCompatActivity {
     private ImageButton stopButton;
 
@@ -42,7 +44,11 @@ public class Employee extends AppCompatActivity {
         services = findViewById(R.id.employee_service);
 
         nameText.setText(employee.getFirstName() + " " + employee.getLastName());
-        score.setText(employee.getArithmeticMeanScore());
+
+        float scoreF = employee.getArithmeticMeanScore();
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        String scoreText= decimalFormat.format(scoreF);
+        score.setText(scoreText);
         services.setText(employee.getServices().getName());
 
         Picasso.get()

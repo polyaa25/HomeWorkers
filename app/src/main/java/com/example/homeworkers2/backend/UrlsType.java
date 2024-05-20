@@ -2,7 +2,7 @@ package com.example.homeworkers2.backend;
 
 public class UrlsType {
 
-    public final static String GENERAL_URL = "http://172.16.0.103:8000/";
+    public final static String GENERAL_URL = "http://192.168.219.69:8000/";
     public final static String MOBILE_V1 = "mobile_client/v1/";
     public final static String USERS = "users/";
 
@@ -24,6 +24,9 @@ public class UrlsType {
     //PATCH
     public final static String PATCH_ADD_SCROE = "add_score/";
 
+    public static String getUrlToOrders(String userID){
+        return "get_order_by_customer_user/" + userID;
+    }
     public static String getUrlToServices(String categoryID){
         return "services/" + categoryID;
     }

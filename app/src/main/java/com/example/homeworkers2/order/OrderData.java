@@ -1,19 +1,26 @@
 package com.example.homeworkers2.order;
 
 import com.example.homeworkers2.accaunt.AccauntData;
+import com.example.homeworkers2.accaunt.ServicesData;
 
 public class OrderData {
     private String id;
     private String phoneNumber;
     private String orderAddress;
     private String textOrder;
-    private String idCustomerUser;
-    private String idEmployeeUser;
-    private String idOfferedSevices;
     private Boolean isActive;
 
     private AccauntData customerUser;
     private AccauntData employeeUser;
+    private ServicesData services;
+    public ServicesData getServices() {
+        return services;
+    }
+
+    public void setServices(ServicesData services) {
+        this.services = services;
+    }
+
 
     public Boolean getIsActive() {
         return isActive;
@@ -69,30 +76,6 @@ public class OrderData {
 
     public void setTextOrder(String textOrder) {
         this.textOrder = textOrder;
-    }
-
-    public String getIdCustomerUser() {
-        return idCustomerUser;
-    }
-
-    public void setIdCustomerUser(String idCustomerUser) {
-        this.idCustomerUser = idCustomerUser;
-    }
-
-    public String getIdEmployeeUser() {
-        return idEmployeeUser;
-    }
-
-    public void setIdEmployeeUser(String idEmployeeUser) {
-        this.idEmployeeUser = idEmployeeUser;
-    }
-
-    public String getIdOfferedSevices() {
-        return idOfferedSevices;
-    }
-
-    public void setIdOfferedSevices(String idOfferedSevices) {
-        this.idOfferedSevices = idOfferedSevices;
     }
 
 

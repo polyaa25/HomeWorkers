@@ -72,9 +72,27 @@ public class Homepage extends AppCompatActivity {
 
         String userId = Auth.getAuthUserId();
 
-        AccauntData data = AccauntHandle.getAccaunt(userId, urlsBackend);
+        AccauntHandle.getAccaunt(userId, urlsBackend, new AccauntHandle.AccauntCallback() {
+            @Override
+            public void onSuccess(AccauntData data) {
+                runOnUiThread(() -> {
+                    setAccauntInNavigationMenu(navigationView, data);
 
-        setAccauntInNavigationMenu(navigationView, data);
+                    accauntButton.setOnClickListener(v -> {
+                        Intent intent = new Intent(Homepage.this, Account.class);
+
+                        intent.putExtra(EXTRA_ACCAUNT_DATA, data);
+
+                        startActivity(intent);
+                    });
+                });
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+
+            }
+        });
 
 
         //----------------------------------------------------------------
@@ -90,14 +108,6 @@ public class Homepage extends AppCompatActivity {
             startActivity(intent);
         });
 
-        accauntButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Homepage.this, Account.class);
-
-            intent.putExtra(EXTRA_ACCAUNT_DATA, data);
-
-            startActivity(intent);
-        });
-
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
 
@@ -107,7 +117,7 @@ public class Homepage extends AppCompatActivity {
                 Intent intent = new Intent(Homepage.this, Aplication.class);
                 startActivity(intent);
             } else if (id == R.id.nav_exit) {
-                urlsBackend.sendRequest(UrlsType.POST_LOGOUT, "", UrlsRequestMethod.POST);
+                urlsBackend.sendRequestNonCallback(UrlsType.POST_LOGOUT, "", UrlsRequestMethod.POST);
 
                 Auth.clearAuth();
 
@@ -178,12 +188,5 @@ public class Homepage extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException e) {
             Toast.makeText(this, "WhatsApp не установлен", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        urlsBackend.shutdown();
     }
 }

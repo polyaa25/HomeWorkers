@@ -1,13 +1,25 @@
 package com.example.homeworkers2.category;
 
+import com.example.homeworkers2.accaunt.ServicesData;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class CategoryData implements Serializable {
 
     private String id;
     private String name;
     private String iconUrl;
+    private ArrayList<ServicesData> services;
 
+
+    public ArrayList<ServicesData> getServices() {
+        return services;
+    }
+
+    public void setServices(ArrayList<ServicesData> services) {
+        this.services = services;
+    }
     public String getIconUrl() {
         return iconUrl;
     }
