@@ -5,25 +5,32 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.example.homeworkers2.backend.Auth;
+import com.example.homeworkers2.backend.NetworkChangeReceiver;
 import com.example.homeworkers2.backend.Urls;
 import com.example.homeworkers2.order.OrderAdapter;
 import com.example.homeworkers2.order.OrderData;
 import com.example.homeworkers2.order.OrderHandle;
+import com.example.homeworkers2.order.OrdersComporator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class OrdersList extends AppCompatActivity {
 
     public static final String EXTRA_ACCAUNT_EMPLOYEE = "EXTRA_ACCAUNT_EMPLOYEE";
 
     private Urls urls;
-
+    private NetworkChangeReceiver networkChangeReceiver;
+    private ArrayList<OrderData> orderDataList;
+    private OrderAdapter adapter;
 
     private ImageButton stopButton;
     private RecyclerView orderList;
@@ -33,21 +40,45 @@ public class OrdersList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orders_list);
 
-        urls = new Urls(this);
+        orderDataList = new ArrayList<>();
 
+        urls = new Urls(this);
+        adapter = new OrderAdapter(orderDataList);
+
+        orderList = findViewById(R.id.order_list);
+        stopButton = findViewById(R.id.stopButton);
+
+        orderList.setLayoutManager(new LinearLayoutManager(OrdersList.this));
+        orderList.setAdapter(adapter);
+
+        networkChangeReceiver = new NetworkChangeReceiver(urls);
+        registerReceiver(networkChangeReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+
+        networkChangeReceiver.observe(this, isConnected -> {
+            if (isConnected) {
+                updateOrderList();
+            }
+        });
+
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void updateOrderList(){
         OrderHandle.OrderListCallback callback = new OrderHandle.OrderListCallback() {
             @Override
             public void onSuccess(ArrayList<OrderData> datas) {
-
                 runOnUiThread(() -> {
-                    System.out.println(datas);
-                    orderList = findViewById(R.id.order_list);
+                    orderDataList.clear();
+                    orderDataList.addAll(datas);
 
-                    orderList.setLayoutManager(new LinearLayoutManager(OrdersList.this));
+                    Collections.sort(orderDataList, new OrdersComporator());
 
-                    OrderAdapter adapter = new OrderAdapter(datas);
-
-                    orderList.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
                 });
             }
 
@@ -58,23 +89,5 @@ public class OrdersList extends AppCompatActivity {
         };
 
         OrderHandle.getOrdersByUserId(urls, Auth.getAuthUserId(), callback);
-
-//        order.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(OrdersList.this, Employee.class);
-//                startActivity(intent);
-//            }
-//        });
-
-        stopButton = findViewById(R.id.stopButton);
-
-        stopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
     }
 }

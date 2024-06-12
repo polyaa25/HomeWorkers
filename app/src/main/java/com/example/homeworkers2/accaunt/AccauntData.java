@@ -64,7 +64,7 @@ public class AccauntData implements Serializable {
     }
 
     public String getAvatarUrl() {
-        return UrlsType.GENERAL_URL + avatarUrl;
+        return avatarUrl;
     }
 
     public void setAvatarUrl(String avatarUrl) {

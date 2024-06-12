@@ -8,6 +8,13 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     tools:context=".Homepage">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="412dp"
+        android:layout_height="593dp"
+        tools:layout_editor_absoluteY="138dp" >
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constaint_"
         android:layout_width="match_parent"
@@ -146,6 +153,7 @@
         </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationview"

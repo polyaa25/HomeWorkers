@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.homeworkers2.accaunt.AccauntData;
+import com.example.homeworkers2.accaunt.AccauntHandle;
 import com.example.homeworkers2.backend.Auth;
 import com.example.homeworkers2.backend.Urls;
 import com.example.homeworkers2.backend.UrlsRequestMethod;
@@ -60,11 +61,7 @@ public class Account extends AppCompatActivity {
 
         String avatarUrl = accauntData.getAvatarUrl();
 
-        if (avatarUrl != null){
-            Picasso.get()
-                    .load(avatarUrl)
-                    .into(avatar);
-        }
+        AccauntHandle.setAvatar(accauntData, avatar);
 
         firstNameText.setText(accauntData.getFirstName());
         lastNameText.setText(accauntData.getLastName());

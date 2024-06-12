@@ -15,6 +15,10 @@ public class Auth {
         sharedPreferences = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE);
     }
 
+    public static SharedPreferences getSharedPreferences(){
+        return sharedPreferences;
+    }
+
     public static void setAuthUserId(String userId){
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(USER_ID, userId);
@@ -32,7 +36,12 @@ public class Auth {
     }
 
     public static String getAuthToken(){
-        return sharedPreferences.getString(TOKEN_KEY, null);
+
+        if(sharedPreferences != null){
+            return sharedPreferences.getString(TOKEN_KEY, null);
+        }
+
+        return "";
     }
 
     public static void clearAuth(){

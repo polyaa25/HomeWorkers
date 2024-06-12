@@ -63,13 +63,15 @@ public class ServicesHandle {
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+                if(!response.isSuccessful()){
+                    return;
+                }
+
                 ServicesData data = new ServicesData();
 
                 try {
                     JSONObject responseJson = new JSONObject(response.body().string());
-
-                    System.out.println(responseJson.getString("category"));
-
 
                     data.setId(responseJson.getString("id"));
                     data.setName(responseJson.getString("name_service"));

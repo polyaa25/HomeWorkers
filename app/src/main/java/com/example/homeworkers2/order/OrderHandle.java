@@ -62,6 +62,11 @@ public class OrderHandle {
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+                if(!response.isSuccessful()){
+                    return;
+                }
+
                 try {
                     JSONObject object = new JSONObject(response.body().string());
 
@@ -88,13 +93,16 @@ public class OrderHandle {
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+                if(!response.isSuccessful()){
+                    return;
+                }
+
                 ArrayList<OrderData> orders = new ArrayList<OrderData>();
 
                 try {
 
                     JSONArray array = new JSONArray(response.body().string());
-
-                    System.out.println(array.length());
 
                     for(int i = 0; i < array.length(); i++){
                         JSONObject object = array.getJSONObject(i);

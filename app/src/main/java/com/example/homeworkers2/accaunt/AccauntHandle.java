@@ -2,6 +2,7 @@ package com.example.homeworkers2.accaunt;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
@@ -9,6 +10,7 @@ import com.example.homeworkers2.backend.Auth;
 import com.example.homeworkers2.backend.Urls;
 import com.example.homeworkers2.backend.UrlsRequestMethod;
 import com.example.homeworkers2.backend.UrlsType;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,9 +32,105 @@ public class AccauntHandle {
         void onFailure(Exception e);
     }
 
-    public interface LoginCallback{
+    public interface UserCallback{
         void onSuccess(Response response);
         void onFailure(Exception e);
+    }
+
+    public interface PhoneCallback{
+        void onSuccess(boolean isExists, boolean isFirst);
+        void onFailure(Exception e);
+    }
+
+    public interface PasswordCallback{
+        void onSuccess(boolean isIdenticalPasswords);
+        void onFailure(Exception e);
+    }
+
+    public static void setAvatar(AccauntData data, ImageView view){
+        String avatarUrl = data.getAvatarUrl();
+
+        if (avatarUrl != null){
+            Picasso.get()
+                    .load(avatarUrl)
+                    .into(view);
+        }
+    }
+
+    public static void checkPhoneNumber(Urls urls, String phone, PhoneCallback callback){
+
+        JSONObject body = new JSONObject();
+
+        try {
+            body.put("telephone", phone);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        Callback responseCallback = new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                callback.onFailure(e);
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                try {
+
+                    if(!response.isSuccessful()){ return; }
+
+                    JSONObject object = new JSONObject(response.body().string());
+
+                    boolean isExists = object.getBoolean("phone_exists");
+                    boolean isFirst = object.getBoolean("phone_is_first");
+
+                    callback.onSuccess(isExists, isFirst);
+                } catch (JSONException e) {
+                    callback.onFailure(e);
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+
+        urls.sendRequest(UrlsType.POST_CHECK_TELEPHONE, body.toString(), UrlsRequestMethod.POST, responseCallback);
+    }
+
+    public static void resetPassword(Urls urls, String phone, String password, String repeatPassword, PasswordCallback callback){
+
+        JSONObject body = new JSONObject();
+
+        try {
+            body.put("telephone", phone);
+            body.put("password", password);
+            body.put("password_repeat", repeatPassword);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        Callback responseCallback = new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                callback.onFailure(e);
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                try {
+                    if(!response.isSuccessful()){ return; }
+
+                    JSONObject object = new JSONObject(response.body().string());
+
+                    boolean isIdenticalPasswords = object.getBoolean("identical_passwords");
+
+                    callback.onSuccess(isIdenticalPasswords);
+                } catch (JSONException e) {
+                    callback.onFailure(e);
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+
+        urls.sendRequest(UrlsType.PATCH_RESET_PASSWORD, body.toString(), UrlsRequestMethod.PATCH, responseCallback);
     }
 
     public static float arithmeticMeanScore(String scoreBody){
@@ -57,7 +155,7 @@ public class AccauntHandle {
         return result;
     }
 
-    public static void login(Urls urls, String telephone, String password, LoginCallback callback){
+    public static void login(Urls urls, String telephone, String password, UserCallback callback){
 
         Callback responseCallback = new Callback() {
             @Override
@@ -119,7 +217,7 @@ public class AccauntHandle {
     }
 
     public static void accauntCreate(Urls urls, String phoneText, String firstNameText, String lastNameText, String passwordText,
-                                     String password2Text){
+                                     String password2Text, UserCallback callback){
         JSONObject body = new JSONObject();
 
         try {
@@ -135,12 +233,12 @@ public class AccauntHandle {
         urls.sendRequest(UrlsType.POST_REGISTER_USER, body.toString(), UrlsRequestMethod.POST, new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-
+                callback.onFailure(e);
             }
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-
+                callback.onSuccess(response);
             }
         });
 
@@ -164,6 +262,11 @@ public class AccauntHandle {
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+                if(!response.isSuccessful()){
+                    return;
+                }
+
                 try {
 
                     AccauntData data = accauntDataCreate(response.body().string());

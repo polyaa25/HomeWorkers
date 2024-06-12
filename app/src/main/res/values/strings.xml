@@ -11,7 +11,7 @@
     <string name="app_no_passw">Забыл пароль ?</string>
     <string name="app_in_registr">Регистрация</string>
     <string name="app_in_registr2">Зарегистрироваться</string>
-    <string name="app_phone_name2">+ 7</string>
+    <string name="app_phone_name2">+7</string>
     <string name="app_phone_name3">+ 7 705 716 33 97</string>
     <string name="app_in_fam">Фамилия</string>
     <string name="app_in_famname">Имя</string>
@@ -70,6 +70,11 @@
 Персональные данные Пользователей хранятся в информационных системах Компании и сохраняются различными способами (пароли, ограничение доступа связанных компаний, сотрудников и подрядчиков и т.д.) для защиты персональных данных Пользователей от несанкционированного доступа и разглашения.
 
 Использование, передача, распространение, предоставление, доступ, обезличивание, блокирование, удаление и уничтожение персональных данных Пользователей осуществляются только на основании решений уполномоченных представителей Компании в соответствии с требованиями применимого законодательства и законными интересами Пользователей.</string>
-    <string name="non_login">Не верный логин или пароль</string>
+    <string name="non_login">Неверный логин или пароль</string>
+    <string name="app_in_code">Введите код</string>
+    <string name="app_code_name">code</string>
+    <string name="app_code_send_button">Отправить</string>
+    <string name="app_repeat_password">Repeat password</string>
+    <string name="app_new_passwrod_name">New password</string>
 
 </resources>

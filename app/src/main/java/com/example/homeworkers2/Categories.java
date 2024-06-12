@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +12,9 @@ import android.widget.ImageButton;
 import com.example.homeworkers2.backend.Urls;
 import com.example.homeworkers2.category.CategoryAdapter;
 import com.example.homeworkers2.category.CategoryData;
-import com.example.homeworkers2.category.CategoryHolder;
+import com.example.homeworkers2.category.CategoryHandle;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Categories extends AppCompatActivity {
 
@@ -39,7 +37,7 @@ public class Categories extends AppCompatActivity {
         stopButton = findViewById(R.id.stopButton);
         //nextButton = findViewById(R.id.categories1);
 
-        CategoryHolder.getCategories(urls, new CategoryHolder.CategoryListCallback() {
+        CategoryHandle.getCategories(urls, new CategoryHandle.CategoryListCallback() {
             @Override
             public void onSuccess(ArrayList<CategoryData> datas) {
                 runOnUiThread(() -> {

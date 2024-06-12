@@ -19,6 +19,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Urls {
+
+
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -39,6 +41,7 @@ public class Urls {
                 .build();
         return cl;
     }
+
 
     public String getGeneralUrl(){
         return generalUrl;
@@ -62,8 +65,10 @@ public class Urls {
             requestBuilder.method(method, bodyJSON);
         }
 
-        if (Auth.getAuthToken() != null){
-            requestBuilder.addHeader("Authorization", "Token " + Auth.getAuthToken());
+        if (Auth.getSharedPreferences() != null){
+            if(Auth.getAuthToken() != null){
+                requestBuilder.addHeader("Authorization", "Token " + Auth.getAuthToken());
+            }
         }
 
         Request request = requestBuilder.build();

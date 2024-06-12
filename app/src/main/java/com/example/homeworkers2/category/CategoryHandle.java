@@ -13,14 +13,12 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class CategoryHolder {
+public class CategoryHandle {
 
     public interface CategoryListCallback{
         void onSuccess(ArrayList<CategoryData> datas);
@@ -37,6 +35,11 @@ public class CategoryHolder {
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+                if(!response.isSuccessful()){
+                    return;
+                }
+
                 try {
                     ArrayList<CategoryData> categories = new ArrayList<CategoryData>();
 

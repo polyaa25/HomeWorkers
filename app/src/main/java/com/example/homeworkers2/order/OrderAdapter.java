@@ -18,6 +18,7 @@ import com.example.homeworkers2.Employee;
 import com.example.homeworkers2.OrdersList;
 import com.example.homeworkers2.R;
 import com.example.homeworkers2.accaunt.AccauntData;
+import com.example.homeworkers2.accaunt.AccauntHandle;
 import com.example.homeworkers2.accaunt.ServicesData;
 import com.example.homeworkers2.accaunt.ServicesHandle;
 import com.example.homeworkers2.backend.Urls;
@@ -71,7 +72,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         OrderData order = orders.get(position);
 
         AccauntData employee = order.getEmployeeUser();
-        ServicesData services = employee.getServices();
+        ServicesData services = order.getServices();
 
         Drawable drawable = ContextCompat.getDrawable(holder.orderLayout.getContext(), R.drawable.style_order_unactive);
 
@@ -82,9 +83,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         holder.nameEmployee.setText(employee.getLastName() + " " + employee.getFirstName());
         holder.nameServices.setText(services.getName());
 
-        Picasso.get()
-                .load(employee.getAvatarUrl())
-                .into(holder.avatarEmployee);
+        AccauntHandle.setAvatar(employee, holder.avatarEmployee);
 
         holder.orderLayout.setOnClickListener(new View.OnClickListener() {
             @Override
