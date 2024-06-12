@@ -13,25 +13,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.content.Intent;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.homeworkers2.accaunt.AccauntHandle;
 import com.example.homeworkers2.backend.Auth;
 import com.example.homeworkers2.backend.NetworkChangeReceiver;
 import com.example.homeworkers2.backend.Urls;
-import com.example.homeworkers2.backend.UrlsRequestMethod;
-import com.example.homeworkers2.backend.UrlsType;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Переход к другой активности
-                Intent intent = new Intent(MainActivity.this, Registracia.class);
+                Intent intent = new Intent(MainActivity.this, RegistraciaActivity.class);
                 startActivity(intent);
             }
         });
@@ -96,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Переход на другое активити
-                Intent intent = new Intent(MainActivity.this, Password.class);
+                Intent intent = new Intent(MainActivity.this, PasswordActivity.class);
                 startActivity(intent);
             }
         });
@@ -118,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                             Auth.setAuthToken(token);
 
                             runOnUiThread(() -> {
-                                Intent intent = new Intent(MainActivity.this, Homepage.class);
+                                Intent intent = new Intent(MainActivity.this, HomepageActivity.class);
                                 startActivity(intent);
                             });
                         } else {

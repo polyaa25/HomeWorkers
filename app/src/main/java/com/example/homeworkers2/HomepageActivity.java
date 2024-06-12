@@ -28,18 +28,8 @@ import com.example.homeworkers2.backend.Urls;
 import com.example.homeworkers2.backend.UrlsRequestMethod;
 import com.example.homeworkers2.backend.UrlsType;
 import com.google.android.material.navigation.NavigationView;
-import com.squareup.picasso.Picasso;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-
-import okhttp3.Response;
-
-public class Homepage extends AppCompatActivity {
+public class HomepageActivity extends AppCompatActivity {
 
     public static final String EXTRA_ACCAUNT_DATA = "EXTRA_ACCAUNT_DATA";
 
@@ -110,13 +100,13 @@ public class Homepage extends AppCompatActivity {
         imageButton2.setOnClickListener(v -> drawer_layout.openDrawer(GravityCompat.START));
 
         ordersListButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Homepage.this, OrdersList.class); // Переход в класс Catalog
+            Intent intent = new Intent(HomepageActivity.this, OrdersListActivity.class); // Переход в класс Catalog
             startActivity(intent);
         });
 
 
         addOrderButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Homepage.this, Categories.class); // Переход в класс Catalog
+            Intent intent = new Intent(HomepageActivity.this, CategoriesActivity.class); // Переход в класс Catalog
             startActivity(intent);
         });
 
@@ -126,16 +116,16 @@ public class Homepage extends AppCompatActivity {
             if (id == R.id.nav_pod) {
                 showContactOptions();
             } else if (id == R.id.nav_opr) {
-                Intent intent = new Intent(Homepage.this, Aplication.class);
+                Intent intent = new Intent(HomepageActivity.this, AplicationActivity.class);
                 startActivity(intent);
             } else if (id == R.id.nav_exit) {
-                if(networkChangeReceiver.isConnectedAndMessage(Homepage.this)) {
+                if(networkChangeReceiver.isConnectedAndMessage(HomepageActivity.this)) {
                     urlsBackend.sendRequestNonCallback(UrlsType.POST_LOGOUT, "", UrlsRequestMethod.POST);
                 }
 
                 Auth.clearAuth();
 
-                Intent intent = new Intent(Homepage.this, MainActivity.class);
+                Intent intent = new Intent(HomepageActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -145,7 +135,7 @@ public class Homepage extends AppCompatActivity {
 
         Button dom1Button = findViewById(R.id.dom1);
         dom1Button.setOnClickListener(v -> {
-            Intent intent = new Intent(Homepage.this, Homepage.class);
+            Intent intent = new Intent(HomepageActivity.this, HomepageActivity.class);
             startActivity(intent);
             finish();
         });
@@ -165,7 +155,7 @@ public class Homepage extends AppCompatActivity {
 
                     accauntButton.setOnClickListener(v -> {
 
-                        Intent intent = new Intent(Homepage.this, Account.class);
+                        Intent intent = new Intent(HomepageActivity.this, AccountActivity.class);
 
                         intent.putExtra(EXTRA_ACCAUNT_DATA, data);
 

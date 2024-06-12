@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
 import com.example.homeworkers2.backend.Auth;
 import com.example.homeworkers2.backend.NetworkChangeReceiver;
@@ -23,7 +21,7 @@ import com.example.homeworkers2.order.OrdersComporator;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class OrdersList extends AppCompatActivity {
+public class OrdersListActivity extends AppCompatActivity {
 
     public static final String EXTRA_ACCAUNT_EMPLOYEE = "EXTRA_ACCAUNT_EMPLOYEE";
 
@@ -48,7 +46,7 @@ public class OrdersList extends AppCompatActivity {
         orderList = findViewById(R.id.order_list);
         stopButton = findViewById(R.id.stopButton);
 
-        orderList.setLayoutManager(new LinearLayoutManager(OrdersList.this));
+        orderList.setLayoutManager(new LinearLayoutManager(OrdersListActivity.this));
         orderList.setAdapter(adapter);
 
         networkChangeReceiver = new NetworkChangeReceiver(urls);

@@ -1,15 +1,7 @@
 package com.example.homeworkers2.sms;
 
-import android.content.Context;
-import android.content.Intent;
-
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.homeworkers2.Registracia;
 import com.example.homeworkers2.backend.Urls;
 import com.example.homeworkers2.backend.UrlsRequestMethod;
 import com.example.homeworkers2.backend.UrlsType;

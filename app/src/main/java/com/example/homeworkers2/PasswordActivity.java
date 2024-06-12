@@ -9,8 +9,6 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,7 +18,7 @@ import com.example.homeworkers2.backend.NetworkChangeReceiver;
 import com.example.homeworkers2.backend.Urls;
 import com.example.homeworkers2.sms.SmsCodeHandle;
 
-public class Password extends AppCompatActivity {
+public class PasswordActivity extends AppCompatActivity {
 
     public static final String PHONE_NUMBER_EXTRA = "phone_number_extra";
 
@@ -53,7 +51,7 @@ public class Password extends AppCompatActivity {
                     boolean smsResult = data.getBooleanExtra(SmsCodeHandle.SMS_CODE_RESULT_EXTRA, false);
 
                     if(smsResult) {
-                        Intent intent = new Intent(Password.this, PasswordResetActivity.class);
+                        Intent intent = new Intent(PasswordActivity.this, PasswordResetActivity.class);
                         intent.putExtra(PHONE_NUMBER_EXTRA, phoneEdit.getText().toString());
                         startActivity(intent);
 
@@ -65,7 +63,7 @@ public class Password extends AppCompatActivity {
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(networkChangeReceiver.isConnectedAndMessage(Password.this)){
+                if(networkChangeReceiver.isConnectedAndMessage(PasswordActivity.this)){
                     checkPhone(resultLauncher);
                 }
             }
@@ -82,7 +80,7 @@ public class Password extends AppCompatActivity {
                         phoneError.setVisibility(View.VISIBLE);
                         phoneError.setText("Пользователя с таким номером не существует");
                     }else{
-                        Intent intent = new Intent(Password.this, CodeActivity.class);
+                        Intent intent = new Intent(PasswordActivity.this, CodeActivity.class);
                         intent.putExtra(SmsCodeHandle.TELEPHONE_TO_SMS_CODE_EXTRA, phoneEdit.getText().toString());
 
                         resultLauncher.launch(intent);

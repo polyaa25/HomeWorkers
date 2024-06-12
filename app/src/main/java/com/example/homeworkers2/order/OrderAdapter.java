@@ -14,17 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.homeworkers2.Employee;
-import com.example.homeworkers2.OrdersList;
+import com.example.homeworkers2.EmployeeActivity;
+import com.example.homeworkers2.OrdersListActivity;
 import com.example.homeworkers2.R;
 import com.example.homeworkers2.accaunt.AccauntData;
 import com.example.homeworkers2.accaunt.AccauntHandle;
 import com.example.homeworkers2.accaunt.ServicesData;
-import com.example.homeworkers2.accaunt.ServicesHandle;
-import com.example.homeworkers2.backend.Urls;
-import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
@@ -91,9 +87,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
                 Context laoutContext = holder.orderLayout.getContext();
 
-                Intent intent = new Intent(laoutContext, Employee.class);
+                Intent intent = new Intent(laoutContext, EmployeeActivity.class);
 
-                intent.putExtra(OrdersList.EXTRA_ACCAUNT_EMPLOYEE, employee);
+                intent.putExtra(OrdersListActivity.EXTRA_ACCAUNT_EMPLOYEE, employee);
 
                 holder.orderLayout.getContext().startActivity(intent);
             }

@@ -14,7 +14,7 @@ import com.example.homeworkers2.accaunt.AccauntHandle;
 import com.example.homeworkers2.backend.Urls;
 import com.example.homeworkers2.order.OrderHandle;
 
-public class CreateOrder extends AppCompatActivity {
+public class CreateOrderActivity extends AppCompatActivity {
     private ImageButton stopButton;
 
     private EditText editTelephoneText;
@@ -27,7 +27,7 @@ public class CreateOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_order);
 
-        String idService = getIntent().getStringExtra(Services.EXTRA_SERVICE_ID);
+        String idService = getIntent().getStringExtra(ServicesActivity.EXTRA_SERVICE_ID);
 
         urls = new Urls(this);
 
@@ -54,9 +54,9 @@ public class CreateOrder extends AppCompatActivity {
                     @Override
                     public void onSuccess(AccauntData data) {
                         runOnUiThread(() -> {
-                            Intent intent = new Intent(CreateOrder.this, Employee.class);
+                            Intent intent = new Intent(CreateOrderActivity.this, EmployeeActivity.class);
 
-                            intent.putExtra(OrdersList.EXTRA_ACCAUNT_EMPLOYEE, data);
+                            intent.putExtra(OrdersListActivity.EXTRA_ACCAUNT_EMPLOYEE, data);
 
                             startActivity(intent);
                             finish();

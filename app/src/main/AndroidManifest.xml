@@ -30,43 +30,43 @@
             android:name=".CodeActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateOrder"
+            android:name=".CreateOrderActivity"
             android:exported="false" />
         <activity
-            android:name=".Employee"
+            android:name=".EmployeeActivity"
             android:exported="false" />
         <activity
-            android:name=".Services"
+            android:name=".ServicesActivity"
             android:exported="false" />
         <activity
-            android:name=".Categories"
+            android:name=".CategoriesActivity"
             android:exported="false" />
         <activity
-            android:name=".Aplication"
+            android:name=".AplicationActivity"
             android:exported="false" />
         <activity
-            android:name=".Support"
+            android:name=".SupportActivity"
             android:exported="false" />
         <activity
-            android:name=".Homepage"
+            android:name=".HomepageActivity"
             android:exported="false" />
         <activity
-            android:name=".Account"
+            android:name=".AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".Password"
+            android:name=".PasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".OrdersList"
+            android:name=".OrdersListActivity"
             android:exported="false" />
         <activity
-            android:name=".Registracia"
+            android:name=".RegistraciaActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Splash"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

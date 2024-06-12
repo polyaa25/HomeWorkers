@@ -73,7 +73,7 @@ public class PasswordResetActivity extends AppCompatActivity {
             }
         };
 
-        String phone = intent.getStringExtra(Password.PHONE_NUMBER_EXTRA);
+        String phone = intent.getStringExtra(PasswordActivity.PHONE_NUMBER_EXTRA);
 
         AccauntHandle.resetPassword(
                 urls,

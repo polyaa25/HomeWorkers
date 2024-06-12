@@ -25,11 +25,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-import okhttp3.OkHttp;
-import okhttp3.OkHttpClient;
 import okhttp3.Response;
 
-public class Registracia extends AppCompatActivity {
+public class RegistraciaActivity extends AppCompatActivity {
 
 
     private EditText phoneText;
@@ -75,7 +73,7 @@ public class Registracia extends AppCompatActivity {
 
                     boolean smsResult = data.getBooleanExtra(SmsCodeHandle.SMS_CODE_RESULT_EXTRA, false);
 
-                    if(smsResult && networkChangeReceiver.isConnectedAndMessage(Registracia.this)){
+                    if(smsResult && networkChangeReceiver.isConnectedAndMessage(RegistraciaActivity.this)){
                         registration();
                     }
                 }
@@ -85,7 +83,7 @@ public class Registracia extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Registracia.this, CodeActivity.class);
+                Intent intent = new Intent(RegistraciaActivity.this, CodeActivity.class);
                 intent.putExtra(SmsCodeHandle.TELEPHONE_TO_SMS_CODE_EXTRA, phoneText.getText().toString());
 
                 resultLauncher.launch(intent);

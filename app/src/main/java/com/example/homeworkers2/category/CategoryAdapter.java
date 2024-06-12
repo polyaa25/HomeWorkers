@@ -13,14 +13,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.homeworkers2.Categories;
-import com.example.homeworkers2.CreateOrder;
+import com.example.homeworkers2.CategoriesActivity;
 import com.example.homeworkers2.R;
-import com.example.homeworkers2.Services;
-import com.example.homeworkers2.order.OrderAdapter;
+import com.example.homeworkers2.ServicesActivity;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -72,9 +68,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             public void onClick(View v) {
                 Context context = holder.categoryLayout.getContext();
 
-                Intent intent = new Intent(context, Services.class);
+                Intent intent = new Intent(context, ServicesActivity.class);
 
-                intent.putExtra(Categories.EXTRA_CATEGORY, category);
+                intent.putExtra(CategoriesActivity.EXTRA_CATEGORY, category);
 
                 context.startActivity(intent);
 

@@ -1,14 +1,13 @@
 package com.example.homeworkers2;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class Choice extends AppCompatActivity {
+public class SupportActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choice);
+        setContentView(R.layout.activity_support);
     }
 }

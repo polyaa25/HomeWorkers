@@ -5,11 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 
 import com.example.homeworkers2.backend.Auth;
 
-public class Splash extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +25,11 @@ public class Splash extends AppCompatActivity {
             @Override
             public void run() {
                 if(Auth.getAuthToken() != null){
-                    Intent intent = new Intent(Splash.this, Homepage.class);
+                    Intent intent = new Intent(SplashActivity.this, HomepageActivity.class);
                     startActivity(intent);
                 }
                 else{
-                    Intent intent = new Intent(Splash.this, MainActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
 

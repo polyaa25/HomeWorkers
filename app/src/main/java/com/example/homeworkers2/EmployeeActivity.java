@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 
-public class Employee extends AppCompatActivity {
+public class EmployeeActivity extends AppCompatActivity {
     private ImageButton stopButton;
 
     private AccauntData employee;
@@ -34,7 +34,7 @@ public class Employee extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee);
 
-        employee = (AccauntData) getIntent().getSerializableExtra(OrdersList.EXTRA_ACCAUNT_EMPLOYEE);
+        employee = (AccauntData) getIntent().getSerializableExtra(OrdersListActivity.EXTRA_ACCAUNT_EMPLOYEE);
 
         stopButton = findViewById(R.id.stopButton2);
 

@@ -16,7 +16,7 @@ import com.example.homeworkers2.category.CategoryHandle;
 
 import java.util.ArrayList;
 
-public class Categories extends AppCompatActivity {
+public class CategoriesActivity extends AppCompatActivity {
 
     public static final String EXTRA_CATEGORY = "EXTRA_CATEGORY";
 
@@ -41,7 +41,7 @@ public class Categories extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<CategoryData> datas) {
                 runOnUiThread(() -> {
-                    categoryList.setLayoutManager(new LinearLayoutManager(Categories.this));
+                    categoryList.setLayoutManager(new LinearLayoutManager(CategoriesActivity.this));
                     categoryList.setAdapter(new CategoryAdapter(datas));
                 });
             }

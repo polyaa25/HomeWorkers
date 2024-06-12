@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,19 +17,17 @@ import com.example.homeworkers2.backend.Auth;
 import com.example.homeworkers2.backend.Urls;
 import com.example.homeworkers2.backend.UrlsRequestMethod;
 import com.example.homeworkers2.backend.UrlsType;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.concurrent.Future;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class Account extends AppCompatActivity {
+public class AccountActivity extends AppCompatActivity {
 
     private ImageView avatar;
 
@@ -47,7 +43,7 @@ public class Account extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         Intent thisIntent = getIntent();
-        AccauntData accauntData = (AccauntData) thisIntent.getSerializableExtra(Homepage.EXTRA_ACCAUNT_DATA);
+        AccauntData accauntData = (AccauntData) thisIntent.getSerializableExtra(HomepageActivity.EXTRA_ACCAUNT_DATA);
 
         urls = new Urls(this);
 

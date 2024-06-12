@@ -11,12 +11,9 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.homeworkers2.CreateOrder;
+import com.example.homeworkers2.CreateOrderActivity;
 import com.example.homeworkers2.R;
-import com.example.homeworkers2.Services;
-import com.example.homeworkers2.category.CategoryAdapter;
-import com.example.homeworkers2.category.CategoryData;
-import com.squareup.picasso.Picasso;
+import com.example.homeworkers2.ServicesActivity;
 
 import java.util.List;
 
@@ -62,9 +59,9 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
                 Context context = holder.service.getContext();
 
-                Intent intent = new Intent(context, CreateOrder.class);
+                Intent intent = new Intent(context, CreateOrderActivity.class);
 
-                intent.putExtra(Services.EXTRA_SERVICE_ID, service.getId());
+                intent.putExtra(ServicesActivity.EXTRA_SERVICE_ID, service.getId());
 
                 context.startActivity(intent);
 
