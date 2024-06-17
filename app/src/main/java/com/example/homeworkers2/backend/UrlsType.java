@@ -16,6 +16,7 @@ public class UrlsType {
     public final static String POST_SMS_CHECK = "sms_code_check/";
     public final static String POST_LOGOUT = "auth/token/logout/";
     public final static String POST_CHECK_TELEPHONE = "check_telephone/";
+    public final static String POST_REGISTER_DEVICE = "register_device/";
 
     //GET
     public final static String GET_ORDER = "get_order_by_customer_user/";

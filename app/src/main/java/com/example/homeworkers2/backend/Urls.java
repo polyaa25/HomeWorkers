@@ -19,8 +19,6 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Urls {
-
-
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     private ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -81,8 +79,6 @@ public class Urls {
         Request request = createRequest(url, body, method);
 
         client.newCall(request).enqueue(callback);
-
-
     }
 
     public void sendRequestNonCallback(String url, String body, String method){

@@ -14,7 +14,6 @@
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
-        android:usesCleartextTraffic="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/logotip"
         android:label="@string/app_name"
@@ -22,7 +21,11 @@
         android:roundIcon="@drawable/baby"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeWorkers2"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".CatalogActivity"
+            android:exported="false" />
         <activity
             android:name=".PasswordResetActivity"
             android:exported="false" />

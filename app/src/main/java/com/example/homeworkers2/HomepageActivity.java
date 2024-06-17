@@ -68,7 +68,6 @@ public class HomepageActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 update();
-                swipeRefreshLayout.setRefreshing(false);
             }
         });
 
@@ -80,6 +79,7 @@ public class HomepageActivity extends AppCompatActivity {
         networkChangeReceiver.observe(this, isConnected -> {
             if (isConnected) {
                 updateAccaunt();
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
@@ -94,10 +94,16 @@ public class HomepageActivity extends AppCompatActivity {
 
         addOrderButton = findViewById(R.id.plus1);
         ordersListButton = findViewById(R.id.catalog1);
+        services = findViewById(R.id.human1);
 
         accauntButton = navigationView.getHeaderView(0).findViewById(R.id.account_ac);
 
         imageButton2.setOnClickListener(v -> drawer_layout.openDrawer(GravityCompat.START));
+
+        services.setOnClickListener(v -> {
+            Intent intent = new Intent(HomepageActivity.this, CatalogActivity.class); // Переход в класс Catalog
+            startActivity(intent);
+        });
 
         ordersListButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomepageActivity.this, OrdersListActivity.class); // Переход в класс Catalog

@@ -23,9 +23,11 @@ import java.util.List;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>{
 
     private List<CategoryData> categories;
+    private int layout;
 
-    public CategoryAdapter(List<CategoryData> categories){
+    public CategoryAdapter(List<CategoryData> categories, int layout){
         this.categories = categories;
+        this.layout = layout;
     }
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
@@ -49,7 +51,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public CategoryAdapter.CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View categoryView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.category, parent, false);
+                .inflate(layout, parent, false);
         return new CategoryViewHolder(categoryView);
     }
 
@@ -63,22 +65,26 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                 .load(category.getIconUrl())
                 .into(holder.logoCategory);
 
-        holder.categoryLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = holder.categoryLayout.getContext();
 
-                Intent intent = new Intent(context, ServicesActivity.class);
+        if(layout == R.layout.category) {
 
-                intent.putExtra(CategoriesActivity.EXTRA_CATEGORY, category);
+            holder.categoryLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = holder.categoryLayout.getContext();
 
-                context.startActivity(intent);
+                    Intent intent = new Intent(context, ServicesActivity.class);
 
-                if (context instanceof Activity){
-                    ((Activity) context).finish();
+                    intent.putExtra(CategoriesActivity.EXTRA_CATEGORY, category);
+
+                    context.startActivity(intent);
+
+                    if (context instanceof Activity) {
+                        ((Activity) context).finish();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     @Override

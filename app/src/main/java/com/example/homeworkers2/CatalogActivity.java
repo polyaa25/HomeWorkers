@@ -16,7 +16,7 @@ import com.example.homeworkers2.category.CategoryHandle;
 
 import java.util.ArrayList;
 
-public class CategoriesActivity extends AppCompatActivity {
+public class CatalogActivity extends AppCompatActivity {
 
     public static final String EXTRA_CATEGORY = "EXTRA_CATEGORY";
 
@@ -29,7 +29,7 @@ public class CategoriesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categories);
+        setContentView(R.layout.activity_catalog);
 
         urls = new Urls(this);
 
@@ -41,8 +41,8 @@ public class CategoriesActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<CategoryData> datas) {
                 runOnUiThread(() -> {
-                    categoryList.setLayoutManager(new LinearLayoutManager(CategoriesActivity.this));
-                    categoryList.setAdapter(new CategoryAdapter(datas, R.layout.category));
+                    categoryList.setLayoutManager(new LinearLayoutManager(CatalogActivity.this));
+                    categoryList.setAdapter(new CategoryAdapter(datas, R.layout.category_catalog));
                 });
             }
 

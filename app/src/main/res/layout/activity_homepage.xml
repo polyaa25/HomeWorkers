@@ -20,6 +20,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif_image"
+            android:layout_width="256dp"
+            android:layout_height="406dp"
+            android:src="@drawable/wave"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.587" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

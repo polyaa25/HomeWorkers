@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/category"
+    android:layout_width="match_parent"
+    android:layout_height="41dp"
+    android:layout_marginBottom="20dp"
+    android:layout_gravity="center_horizontal"
+    android:gravity="left"
+    android:background="@drawable/style_category_transparent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/logo_category"
+        android:layout_width="85dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:layout_weight="1"
+        android:src="@drawable/ic_stroitel" />
+
+    <TextView
+        android:id="@+id/name_category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/app_in_categories_st"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:id="@+id/next_category"
+        android:layout_width="85dp"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:src="@drawable/ic_next" />
+</LinearLayout>
+
